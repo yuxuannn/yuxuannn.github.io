@@ -280,7 +280,7 @@ var n,r,o=(1===t.length?(n=t[0],r=s[n],void 0!==r?r:[n]):t).map(function(e,t){sw
 case 4:return a(e,u);
 default:return e}});
 return{originalParts:t,parts:o,daysAnded:!!o[2]&&"*"===o[2][0]||!!o[4]&&"*"===o[4][0]}}},{}],16:[function(e,t,n){var i=e("../lib/index"),s=e("../lib/path"),o=["5 0 * 8 *","15 14 1 * *","0 22 * * 1-5","23 0-20/2 * * *","5 4 * * sun","0 0,12 1 */2 *","0 4 8-14 * *","0 0 1,15 * 3","@weekly"],c=function(e){return e.trim().replace(/ +/g," ")};
-function a(e){var t=c(e),n=document.title!==s.defaultTitle?document.title.charAt(0).toUpperCase()+document.title.substr(1)":null,r=i.prenormalize(t),o=i.normalize(r),a=o.errors?null:i.describe(r),u=t.split(" ");
+function a(e){var t=c(e),n="-":null,r=i.prenormalize(t),o=i.normalize(r),a=o.errors?null:i.describe(r),u=t.split(" ");
 return{schedule:o,description:a,commonBlurb:n,isSpecialString:1<=u.length&&u[0].startsWith("@")}}var r=s.textFromLocation()||"5 4 * * *",u=a(r);
 t.exports={state:{text:r,schedule:u.schedule,description:u.description,exampleIndex:0,selectedPart:null,selectedDirectly:!1,moreNextDates:!1,commonBlurb:u.commonBlurb,isSpecialString:u.isSpecialString,date:new Date,focussed:!1},reducers:{showNextExample:function(e,t){var n=o[t.exampleIndex],r=a(n);
 return s.updateLocation(n),{text:n,schedule:r.schedule,description:r.description,exampleIndex:(t.exampleIndex+1)%o.length,isSpecialString:r.isSpecialString}},inputFocus:function(e,t){return{focussed:!0}},inputBlur:function(e,t){return{text:c(t.text),selectedPart:null,focussed:!1}},selectPart:function(e,t){return{selectedPart:t.isSpecialString?null:e,selectedDirectly:!1}},inputUpdate:function(e,t){return{text:e}},inputEnter:function(e,t){return s.updateLocation(e),a(e)},inputSelect:function(e,t){if(!t.focussed)return{};
